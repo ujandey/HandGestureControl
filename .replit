@@ -16,6 +16,10 @@ author = "agent"
 task = "workflow.run"
 args = "Gesture Control System"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Gesture Demo"
+
 [[workflows.workflow]]
 name = "Gesture Control System"
 author = "agent"
@@ -23,6 +27,14 @@ author = "agent"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "pip install opencv-python mediapipe numpy pyautogui pycaw screeninfo configparser Pillow psutil && python main.py"
+
+[[workflows.workflow]]
+name = "Gesture Demo"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python demo_app.py"
 
 [deployment]
 run = ["sh", "-c", "pip install opencv-python mediapipe numpy pyautogui pycaw screeninfo configparser Pillow psutil && python main.py"]
