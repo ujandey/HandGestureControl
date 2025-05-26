@@ -1,0 +1,28 @@
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["freetype", "lcms2", "libGL", "libGLU", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "scrot", "tcl", "tk", "xvfb-run", "zlib"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Gesture Control System"
+
+[[workflows.workflow]]
+name = "Gesture Control System"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pip install opencv-python mediapipe numpy pyautogui pycaw screeninfo configparser Pillow psutil && python main.py"
+
+[deployment]
+run = ["sh", "-c", "pip install opencv-python mediapipe numpy pyautogui pycaw screeninfo configparser Pillow psutil && python main.py"]
